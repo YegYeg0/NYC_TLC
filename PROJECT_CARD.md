@@ -2,7 +2,7 @@
 
 ## 1. Selected Path and Dataset Subset
 **Selected Path:** Path A (`NYC TLC Trip Record Data`).
-**Selected Subset:** NYC Yellow Taxi trip records for **January 2025** (`yellow_tripdata_2025-01.parquet`, ~2.96 million records) paired with the official spatial lookup table (`taxi_zone_lookup.csv`, 265 zones).
+**Selected Subset:** NYC Yellow Taxi trip records for **January 2025** (`yellow_tripdata_2025-01.parquet`, ~3.48 million records) paired with the official spatial lookup table (`taxi_zone_lookup.csv`, 265 zones).
 
 ## 2. Temporary Title
 **Predicting Hourly Taxi Surplus and Shortage Across NYC Zones Using Net-Flow ($\text{Dropoffs} - \text{Pickups}$)**
