@@ -11,7 +11,7 @@
 Every finished taxi ride takes a cab away from the pickup zone (`PULocationID`) and leaves an empty, available cab in the dropoff zone (`DOLocationID`).
 * When **Dropoffs are much higher than Pickups** in a zone during an hour, too many taxis are empty (**Taxi Surplus**). Drivers waste time and fuel driving around without passengers.
 * When **Pickups are much higher than Dropoffs**, the zone runs out of cabs (**Taxi Shortage**), and passengers have to wait a long time.
-* **Decision Supported:** By predicting the **Net Flow ($\text{Dropoffs} - \text{Pickups}$)** for each zone every hour, operators can see which zones will have extra empty taxis and move them to zones that are about to run out of taxis.
+* **Decision Supported:** By predicting the **Net Flow ($`\text{Dropoffs} - \text{Pickups}`$)** for each zone every hour, operators can see which zones will have extra empty taxis and move them to zones that are about to run out of taxis.
 
 ## 4. Unit of Analysis and Unit of Prediction
 * **Unit of Observation (Raw Data):** A single taxi trip record.
@@ -22,11 +22,11 @@ Every finished taxi ride takes a cab away from the pickup zone (`PULocationID`) 
 NYC Yellow Taxi trips across active New York City taxi zones (mainly Manhattan, Queens, Brooklyn, and JFK/LaGuardia airports) during January 2025.
 
 ## 6. Main Analytical / Predictive Question
-*"Can we use past trip patterns, time of day, day of week, and zone characteristics to predict the hourly $ **Net Flow ($\text{Dropoffs} - \text{Pickups}$)** $ in each taxi zone, and how much does prediction error change during holidays/bad weather or across different types of neighborhoods?"*
+*"Can we use past trip patterns, time of day, day of week, and zone characteristics to predict the hourly **$` Net Flow (\text{Dropoffs} - \text{Pickups}) `$** in each taxi zone, and how much does prediction error change during holidays/bad weather or across different types of neighborhoods?"*
 
 ## 7. Target Variable / Output
 * **Main Target Variable (`net_flow`):** For each zone $z$ and hour $t$:
-  $$\text{net\_flow}_{z,t} = \text{Dropoffs}_{z,t} - \text{Pickups}_{z,t}$$
+  $`\text{net\_flow}_{z,t} = \text{Dropoffs}_{z,t} - \text{Pickups}_{z,t}`$
 
 ## 8. Initial Baseline
 * **24-Hour Baseline:** Predict that a zone's net flow at hour $t$ will be the exact same as its net flow at the same hour yesterday ($t - 24$).
@@ -45,7 +45,7 @@ Because this is time-series data, **we cannot use a random split** (that would l
 
 ## 11. Major Data Leakage Risks
 1. **Time Leakage (Look-Ahead Bias):** Using future hours to predict past hours, or calculating averages/scalers on the whole month before splitting into train and test sets.
-2. **Current-Hour Dropoff Leakage:** Since $\text{net\_flow} = \text{Dropoffs} - \text{Pickups}$ in hour $t$, we cannot use trips that finish inside hour $t$ as input features to predict hour $t$. We can only use trips that finished *before* hour $t$ started.
+2. **Current Hour Dropoff Leakage:** Since $`\text{net\ flow} = \text{Dropoffs} - \text{Pickups}`$ in hour $t$, we cannot use trips that finish inside hour $t$ as input features to predict hour $t$. We can only use trips that finished *before* hour $t$ started.
 
 ## 12. Proposed Unsupervised / Pattern Discovery Component
 
@@ -53,3 +53,4 @@ Because this is time-series data, **we cannot use a random split** (that would l
 
 ## 14. Ethical, Privacy, and Potential Bias Risks
 * **Geographic Bias:** Yellow taxis mostly operate in Manhattan and at the airports. People living in outer boroughs (like the Bronx, Staten Island, and parts of Queens/Brooklyn) mostly use Green Taxis or Uber/Lyft. If city planners only look at Yellow Taxi data, they might ignore outer-borough neighborhoods.
+
