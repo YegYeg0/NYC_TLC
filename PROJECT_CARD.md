@@ -22,7 +22,7 @@ Every finished taxi ride takes a cab away from the pickup zone (`PULocationID`) 
 NYC Yellow Taxi trips across active New York City taxi zones (mainly Manhattan, Queens, Brooklyn, and JFK/LaGuardia airports) during January 2025.
 
 ## 6. Main Analytical / Predictive Question
-*"Can we use past trip patterns, time of day, day of week, and zone characteristics to predict the hourly **Net Flow ($\text{Dropoffs} - \text{Pickups}$)** in each taxi zone, and how much does prediction error change during holidays/bad weather or across different types of neighborhoods?"*
+*"Can we use past trip patterns, time of day, day of week, and zone characteristics to predict the hourly $ **Net Flow ($\text{Dropoffs} - \text{Pickups}$)** $ in each taxi zone, and how much does prediction error change during holidays/bad weather or across different types of neighborhoods?"*
 
 ## 7. Target Variable / Output
 * **Main Target Variable (`net_flow`):** For each zone $z$ and hour $t$:
