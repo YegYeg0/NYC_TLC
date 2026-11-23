@@ -39,9 +39,9 @@ NYC Yellow Taxi trips across active New York City taxi zones (mainly Manhattan, 
 
 * ## 10. Initial Train, Validation, and Test Split Design
 Because this is time-series data, **we cannot use a random split** (that would leak future data into the past). Instead, we split the data strictly by date:
-* **Train Set:** Jan 1 to Jan 21, 2024 (First 3 weeks — ~68% of the month)
-* **Validation Set:** Jan 22 to Jan 26, 2024 (Next 5 days — ~16% of the month)
-* **Test Set:** Jan 27 to Jan 31, 2024 (Last 5 days — ~16% of the month, kept locked until final testing in Phase 3)
+* **Train Set:** Jan 1 to Jan 21, 2025 (First 3 weeks — ~68% of the month)
+* **Validation Set:** Jan 22 to Jan 26, 2025 (Next 5 days — ~16% of the month)
+* **Test Set:** Jan 27 to Jan 31, 2025 (Last 5 days — ~16% of the month, kept locked until final testing in Phase 3)
 
 ## 11. Major Data Leakage Risks
 1. **Time Leakage (Look-Ahead Bias):** Using future hours to predict past hours, or calculating averages/scalers on the whole month before splitting into train and test sets.
