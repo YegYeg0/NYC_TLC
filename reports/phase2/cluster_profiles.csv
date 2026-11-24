@@ -1,0 +1,7 @@
+cluster_id,num_zones,avg_hourly_activity,avg_inflow_ratio,avg_trip_dist_mi,wkday_morning_8am_flow,wkday_evening_6pm_flow,top_representative_zones
+0,45,15.4,0.745,5.22,0.063,0.415,"East Harlem South, Clinton West, Financial District North, Morningside Heights"
+1,127,2.2,0.672,7.3,0.008,0.134,"Hudson Sq, Seaport, Sunnyside, Downtown Brooklyn/MetroTech"
+2,15,138.1,0.562,3.06,-0.166,0.142,"Upper East Side North, Upper West Side South, Murray Hill, Lenox Hill West"
+3,17,162.8,0.498,3.01,0.216,-0.111,"Upper East Side South, Midtown Center, Lincoln Square East, Midtown East"
+4,13,157.8,0.469,2.66,-0.155,0.112,"Times Sq/Theatre District, Penn Station/Madison Sq West, Clinton East, East Village"
+5,3,127.7,0.177,11.25,-0.356,-0.625,"JFK Airport, LaGuardia Airport, East Elmhurst"

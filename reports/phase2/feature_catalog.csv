@@ -1,0 +1,18 @@
+Feature(s),Category,Formula / Source,Domain Logic & Leakage Prevention
+"hour_sin, hour_cos",Cyclical Temporal,sin/cos(2*pi*hour/24),Preserves 23:00 -> 00:00 continuity for linear/distance models; known in advance.
+"dow_sin, dow_cos",Cyclical Temporal,sin/cos(2*pi*dayofweek/7),Preserves Sunday -> Monday continuity; known in advance.
+"is_weekend, is_holiday",Calendar,Sat/Sun flag; Jan 1 & Jan 20 flags,Captures non-commute schedule drops; known strictly from calendar.
+"is_rush_hour, is_nightlife",Domain Temporal,Weekday 7-9/17-19; Fri-Sun 0-4,Encodes commuter peaks and weekend nightlife waves identified in Phase 1.
+is_post_congestion_pricing,Policy Regime,hour_ts >= 2025-01-05,Captures NYC CBD congestion pricing launch regime shift (publicly pre-announced).
+"net_flow_lag_{1,2,3,24,48,168}h",Autoregressive Lag,Zone net_flow at t-k (k >= 1),"Captures immediate momentum, daily seasonality (24h), and weekly seasonality (168h)."
+"pickups/dropoffs_lag_{1,24,168}h",Component Lag,Inflow & outflow separately at t-k,Distinguishes high-volume balanced hubs (+200/-200) from quiet zones (+1/-1).
+"net_flow_diff_1h, _diff_24h",Trend / Momentum,lag_1h - lag_2h; lag_1h - lag_24h,Measures whether surplus/shortage is accelerating or reversing.
+"net_flow_roll_mean/std_3h, _24h",Rolling Temporal,Rolling stats on shift(1) values,Smooths noisy 1-hour spikes without leaking current hour t.
+pu_avg_speed/duration_lag_1h,Traffic Congestion,Prior hour zone speed & duration,Congestion slows taxi turnover and delays dropoffs in subsequent hours.
+city_activity_lag_1h,Spatial Macro,Citywide total trips at t-1h,"Captures macro NYC demand shocks (e.g., rain/snowstorms or major events)."
+other_boro_net_flow_lag_1h,Spatial Spillover,Same-borough net_flow minus own zone at t-1h,Empty cabs accumulating in neighboring zones spill over into nearby shortage zones.
+zone_train_mean/std_netflow,Spatial Static (Train),Train-only zone net_flow mean & std,Encodes baseline structural tendency of each zone (fit on Jan 1-21 only).
+zone_train_inflow_ratio,Spatial Static (Train),Train dropoffs / (pickups + dropoffs),"Captures chronic sinks (>0.5, e.g., Newark/outer zones) vs sources (<0.5)."
+"zone_train_avg_dist, _speed, _ehail_share",Spatial Static (Train),Train-only zone trip traits,Distinguishes airport/long-haul hubs from short-hop Manhattan corridors.
+"is_airport_zone, boro_*",Geographic Lookup,From taxi_zone_lookup.csv,Encodes static geographic boundaries and airport flat-rate/regulatory dynamics.
+zone_cluster_id,Unsupervised Archetype,K-Means cluster fit on Train zone profiles,Groups zones sharing similar 24h weekday/weekend flow waves (fit on Jan 1-21 only).

@@ -218,3 +218,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+data/*.parquet
+data/*.csv
+data/raw/
+data/processed/
+
+# Ignore Python virtual environments & cache
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
